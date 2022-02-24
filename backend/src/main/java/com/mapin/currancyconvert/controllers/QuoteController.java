@@ -1,5 +1,7 @@
 package com.mapin.currancyconvert.controllers;
 
+import com.mapin.currancyconvert.dto.ASKQuoteDTO;
+import com.mapin.currancyconvert.dto.BIDQuoteDTO;
 import com.mapin.currancyconvert.dto.QuoteDTO;
 import com.mapin.currancyconvert.services.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,6 @@ public class QuoteController {
     @Autowired
     private QuoteService quoteService;
 
-    @GetMapping(value = "/dolar")
-    public ResponseEntity<Page<QuoteDTO>> findALlDollarQuotes(Pageable page) {
-        Page<QuoteDTO> list = quoteService.findAllDollarQuotes(page);
-        return ResponseEntity.ok().body(list);
-    }
-
     @GetMapping(value = "/dolar/periodo")
     public ResponseEntity<Page<QuoteDTO>> findAllDollarQuotesByPeriod(
             @RequestParam(value = "minDate", defaultValue = "") String minDate,
@@ -33,10 +29,22 @@ public class QuoteController {
         return ResponseEntity.ok(page);
     }
 
-    @GetMapping(value = "/euro")
-    public ResponseEntity<Page<QuoteDTO>> findAllEuroQuotes(Pageable page) {
-        Page<QuoteDTO> list = quoteService.findAllEuroQuotes(page);
-        return ResponseEntity.ok().body(list);
+    @GetMapping(value = "/dolar/periodo/bid")
+    public ResponseEntity<Page<BIDQuoteDTO>> findAllDolarBIDQuotesByPeriod(
+            @RequestParam(value = "minDate", defaultValue = "") String minDate,
+            @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
+            Pageable pageable) {
+        Page<BIDQuoteDTO> page = quoteService.findAllDolarBIDQuotesByPeriod(minDate, maxDate, pageable);
+        return ResponseEntity.ok(page);
+    }
+
+    @GetMapping(value = "/dolar/periodo/ask")
+    public ResponseEntity<Page<ASKQuoteDTO>> findAllDolarASKQuotesByPeriod(
+            @RequestParam(value = "minDate", defaultValue = "") String minDate,
+            @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
+            Pageable pageable) {
+        Page<ASKQuoteDTO> page = quoteService.findAllDolarASKQuotesByPeriod(minDate, maxDate, pageable);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping(value = "/euro/periodo")
@@ -48,10 +56,22 @@ public class QuoteController {
         return ResponseEntity.ok(page);
     }
 
-    @GetMapping(value = "/bitcoin")
-    public ResponseEntity<Page<QuoteDTO>> findAllBitcoinQuotes(Pageable page) {
-        Page<QuoteDTO> list = quoteService.findAllBitcoinQuotes(page);
-        return ResponseEntity.ok().body(list);
+    @GetMapping(value = "/euro/periodo/bid")
+    public ResponseEntity<Page<BIDQuoteDTO>> findAllEuroBIDQuotesByPeriod(
+            @RequestParam(value = "minDate", defaultValue = "") String minDate,
+            @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
+            Pageable pageable) {
+        Page<BIDQuoteDTO> page = quoteService.findAllEuroBIDQuotesByPeriod(minDate, maxDate, pageable);
+        return ResponseEntity.ok(page);
+    }
+
+    @GetMapping(value = "/euro/periodo/ask")
+    public ResponseEntity<Page<ASKQuoteDTO>> findAllEuroASKQuotesByPeriod(
+            @RequestParam(value = "minDate", defaultValue = "") String minDate,
+            @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
+            Pageable pageable) {
+        Page<ASKQuoteDTO> page = quoteService.findAllEuroASKQuotesByPeriod(minDate, maxDate, pageable);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping(value = "/bitcoin/periodo")
@@ -60,6 +80,24 @@ public class QuoteController {
             @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
             Pageable pageable) {
         Page<QuoteDTO> page = quoteService.findAllBitcoinQuotesByPeriod(minDate, maxDate, pageable);
+        return ResponseEntity.ok(page);
+    }
+
+    @GetMapping(value = "/bitcoin/periodo/bid")
+    public ResponseEntity<Page<BIDQuoteDTO>> findAllBitcoinBIDQuotesByPeriod(
+            @RequestParam(value = "minDate", defaultValue = "") String minDate,
+            @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
+            Pageable pageable) {
+        Page<BIDQuoteDTO> page = quoteService.findAllBitcoinBIDQuotesByPeriod(minDate, maxDate, pageable);
+        return ResponseEntity.ok(page);
+    }
+
+    @GetMapping(value = "/bitcoin/periodo/ask")
+    public ResponseEntity<Page<ASKQuoteDTO>> findAllBitcoinASKQuotesByPeriod(
+            @RequestParam(value = "minDate", defaultValue = "") String minDate,
+            @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
+            Pageable pageable) {
+        Page<ASKQuoteDTO> page = quoteService.findAllBitcoinASKQuotesByPeriod(minDate, maxDate, pageable);
         return ResponseEntity.ok(page);
     }
 }

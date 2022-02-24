@@ -1,14 +1,12 @@
 package com.mapin.currancyconvert.model;
 
 
-import com.mapin.currancyconvert.model.enums.QuoteStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

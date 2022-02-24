@@ -14,30 +14,24 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuoteDTO implements Serializable {
+public class BIDQuoteDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
     private LocalDateTime date;
     private Double bid;
-    private Double ask;
-    private Double high;
-    private Double low;
     private String code;
     private String name;
 
-    public QuoteDTO(Quote obj) {
+    public BIDQuoteDTO(Quote obj) {
         id = obj.getId();
         date = obj.getDate();
         bid = obj.getBid();
-        ask = obj.getAsk();
-        high = obj.getHigh();
-        low = obj.getLow();
         code = obj.getCode();
         name = obj.getName();
     }
 
-    public static Page<QuoteDTO> converter(Page<Quote> page) {
-        return page.map(QuoteDTO::new);
+    public static Page<BIDQuoteDTO> converter(Page<Quote> page) {
+        return page.map(BIDQuoteDTO::new);
     }
 }

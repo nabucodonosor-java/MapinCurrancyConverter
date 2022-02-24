@@ -6,14 +6,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mapin.currancyconvert.model.Quote;
-import com.mapin.currancyconvert.model.enums.QuoteStatus;
 import com.mapin.currancyconvert.repositories.QuoteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

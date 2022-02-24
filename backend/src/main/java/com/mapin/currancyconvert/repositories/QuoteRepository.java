@@ -7,9 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Repository
 public interface QuoteRepository extends JpaRepository<Quote, Long> {
@@ -37,19 +35,4 @@ public interface QuoteRepository extends JpaRepository<Quote, Long> {
             "AND (CAST(:min AS date) IS NULL OR obj.date >= :min) " +
             "AND (CAST(:max AS date) IS NULL OR obj.date <= :max)")
     Page<Quote> findAllBitcoinQuotesByPeriod(LocalDateTime min, LocalDateTime max, Pageable pageable);
-
-//    @Query("SELECT obj "
-//            + "FROM Quote AS obj "
-//            + "WHERE (CAST(:min AS date) IS NULL OR obj.date >= :min) "
-//            + "AND (CAST(:max AS date) IS NULL OR obj.date <= :max) "
-//            + "AND (:quoteStatus IS NULL OR obj.quoteStatus = :quoteStatus) "
-//            + "AND (:currancyId IS NULL OR obj.currancy.id = :currancyId)")
-//    Page<Quote> searchPage(LocalDate min, LocalDate max, String quoteStatus, Long currancyId, Pageable pageable);
-//
-//    @Query("SELECT obj FROM Quote obj "
-//            + "JOIN FETCH obj.currancy "
-//            + "WHERE obj in :quotes")
-//    List<Quote> quotesWithOtherEntities(List<Quote> quotes);
-//
-//    Page<Quote> searchPage(LocalDate min, LocalDate max, String quoteStatus, Pageable pageable);
 }
