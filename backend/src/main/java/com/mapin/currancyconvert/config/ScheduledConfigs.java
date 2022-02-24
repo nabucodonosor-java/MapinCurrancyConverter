@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.google.gson.JsonElement;
@@ -46,7 +47,7 @@ public class ScheduledConfigs {
         String bidUSD = String.valueOf(reqUSD.get("bid").getAsDouble());
         String askUSD = String.valueOf(reqUSD.get("ask").getAsDouble());
 
-        LocalDateTime dataAtualUSD = LocalDateTime.now();
+        LocalDate dataAtualUSD = LocalDate.now();
 
         Quote dollarQuote = new Quote();
         dollarQuote.setCode(codeUSD);
@@ -68,7 +69,7 @@ public class ScheduledConfigs {
         String bidEUR = String.valueOf(reqEUR.get("bid").getAsDouble());
         String askEUR = String.valueOf(reqEUR.get("ask").getAsDouble());
 
-        LocalDateTime dataAtualEUR = LocalDateTime.now();
+        LocalDate dataAtualEUR = LocalDate.now();
 
         Quote quoteEUR = new Quote();
         quoteEUR.setCode(codeEUR);
@@ -90,7 +91,7 @@ public class ScheduledConfigs {
         String bidBTC = String.valueOf(reqBTC.get("bid").getAsDouble());
         String askBTC = String.valueOf(reqBTC.get("ask").getAsDouble());
 
-        LocalDateTime dataAtualBTC = LocalDateTime.now();
+        LocalDate dataAtualBTC = LocalDate.now();
 
         Quote quoteBTC = new Quote();
         quoteBTC.setCode(codeBTC);

@@ -8,7 +8,7 @@ import lombok.Setter;
 import org.springframework.data.domain.Page;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -18,7 +18,7 @@ public class ASKQuoteDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private LocalDateTime date;
+    private LocalDate date;
     private Double ask;
     private String code;
     private String name;
