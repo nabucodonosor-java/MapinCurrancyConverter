@@ -1,6 +1,7 @@
 package com.mapin.currancyconvert.model;
 
 
+import com.mapin.currancyconvert.model.enums.Currancy;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,6 @@ public class Quote implements Serializable {
     private Long id;
     private LocalDate date;
     private String code;
-    private String name;
     private Double bid;
     private Double ask;
     private Double high;

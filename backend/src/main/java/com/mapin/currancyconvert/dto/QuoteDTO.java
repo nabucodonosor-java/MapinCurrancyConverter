@@ -1,6 +1,7 @@
 package com.mapin.currancyconvert.dto;
 
 import com.mapin.currancyconvert.model.Quote;
+import com.mapin.currancyconvert.model.enums.Currancy;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,6 @@ public class QuoteDTO implements Serializable {
     private Double high;
     private Double low;
     private String code;
-    private String name;
 
     public QuoteDTO(Quote obj) {
         id = obj.getId();
@@ -34,7 +34,6 @@ public class QuoteDTO implements Serializable {
         high = obj.getHigh();
         low = obj.getLow();
         code = obj.getCode();
-        name = obj.getName();
     }
 
     public static Page<QuoteDTO> converter(Page<Quote> page) {
