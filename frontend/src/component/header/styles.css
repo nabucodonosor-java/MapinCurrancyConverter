@@ -1,7 +1,15 @@
-.main-header-container {
-    padding-left: 55px;
-    height: 80px;
+.main-header-container { 
+    height: 100px;
     background-color: var(--primary-color);
     display: flex;
+    flex-direction: column;
     align-items: center;
-  }
+    justify-content: center;
+   
+}
+
+.main-header-container h1 {
+    font-size: 30px;
+    color: #5f7bd8;
+    margin-bottom: 10px;
+}

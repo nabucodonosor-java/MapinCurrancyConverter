@@ -10,7 +10,7 @@ public class QuoteASKPeriodComparator implements Comparator<QuoteASKByDateDTO> {
     @Override
     public int compare(QuoteASKByDateDTO q1, QuoteASKByDateDTO q2) {
 
-        return q2.getDate().compareTo(q1.getDate());
+        return q1.getDate().compareTo(q2.getDate());
     }
 
 }

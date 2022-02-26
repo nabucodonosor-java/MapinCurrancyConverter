@@ -21,6 +21,7 @@ public class Quote implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private LocalDate date;
     private String code;
     private Double bid;

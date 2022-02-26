@@ -14,14 +14,14 @@ type Props = {
 
 const Filter = ({ onFilterChange }: Props) => {
   const [dates, setDates] = useState<Date[]>([]);
-  const [currancy, setCurrancy] = useState<Currancy>();
+  const [currancy, setCurrancy] = useState<Currancy>('USD');
 
   const onChangeDate = (dates: Date[]) => {
     if (dates.length === 2) {
       setDates(dates);
       onFilterChange({ dates, currancy });
     }
-  };
+  }; 
 
   const onChangeCurrancy = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCurrancy = event.target.value as Currancy;
@@ -30,7 +30,10 @@ const Filter = ({ onFilterChange }: Props) => {
   };
 
   return (
+
+    
     <div className="filter-container base-card">
+      <h6 className="filter-title">Filtros para Moeda e Período</h6>
       <FlatPickr
         options={{
           mode: 'range',
@@ -46,6 +49,7 @@ const Filter = ({ onFilterChange }: Props) => {
         <option value="EUR">Euro</option>
       </select>
     </div>
+ 
   );
 };
 

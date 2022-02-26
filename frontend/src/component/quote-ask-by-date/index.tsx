@@ -30,7 +30,7 @@ const QuoteASKByDateComponent = ({ filterData }: Props) => {
   return (
     <div className="quotes-by-date-container base-card">
       <div>
-        <h4 className="quotes-by-date-title">Cotação para COMPRA - {params.currancy === 'USD' ? 'Dólar' : 'Euro'}</h4>
+      <h4 className="quotes-by-date-title">Cotação para VENDA - {params.currancy === 'EUR' ? 'Euro' : 'Dólar'}</h4>
         {filterData?.dates && (
           <span className="sales-by-date-period">
             {filterData?.dates.length === 0 ? '' : formatDate(filterData?.dates?.[0])} {filterData?.dates.length === 0 ? '' : '-'} {filterData?.dates.length === 0 ? '' : formatDate(filterData?.dates?.[1])}
@@ -43,7 +43,7 @@ const QuoteASKByDateComponent = ({ filterData }: Props) => {
             options={chartOptions}
             series={[{ name: 'ask', data: chartSeries }]}
             height={200}
-            width={600}
+            width="100%"
           />
         </div>
      

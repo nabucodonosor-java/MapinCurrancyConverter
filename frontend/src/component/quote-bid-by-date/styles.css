@@ -1,3 +1,25 @@
+.quotes-by-date-container {
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.quotes-by-date-title {
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: var(--grey-light);
+  
+}
+
+.quotes-by-date-period {
+  color: var(--grey-light-25);
+}
+
+@media(min-width:375px) {
+ 
+} 
+
+@media(min-width:1200px) {
   .quotes-by-date-container {
     padding: 10px;
   }
@@ -8,13 +30,7 @@
     color: var(--grey-light);
     text-align: center;
   }
-  
-  .quotes-by-date-period {
-    color: var(--grey-light-25);
-  }
-  
- 
-  
+    
   .quotes-by-date-quantity-label {
     color: var(--green);
     font-size: 18px;
@@ -25,3 +41,5 @@
   .sales-by-date-chart {
     width: 800px;
   }
+}  
+  

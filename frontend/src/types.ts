@@ -34,3 +34,15 @@ export type Quote = {
 export type QuoteResponse = {
   content: Quote[];
 };
+
+export type QuoteResponsePage = {
+  content: Quote[];
+  last: boolean;
+    totalElements: number;
+    totalPages: number;
+    size?: number;
+    number: number;
+    first: boolean;
+    numberOfElements?: number;
+    empty?: boolean;
+}
