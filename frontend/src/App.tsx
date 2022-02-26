@@ -1,6 +1,7 @@
 import Filter from 'component/filter';
 import Header from 'component/header';
-import QuoteByDateComponent from 'component/quote-by-date';
+import QuoteASKByDateComponent from 'component/quote-ask-by-date';
+import QuoteByDateComponent from 'component/quote-bid-by-date';
 import { useMemo, useState } from 'react';
 import { FilterData } from 'types';
 import { buildFiltersParams } from 'utils/request';
@@ -17,9 +18,13 @@ function App() {
   return (
     <>
       <Header />
+      <div className='app-filter-container'>
+      <Filter onFilterChange={onChangeFilterData}/>
+      </div>
       <div className='app-container'>
-      <Filter onFilterChange={onChangeFilterData} />
+      
       <QuoteByDateComponent filterData={filterData} />
+      <QuoteASKByDateComponent filterData={filterData} />
       </div>
     </>
   );

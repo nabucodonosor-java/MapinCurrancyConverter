@@ -3,6 +3,11 @@ export type QuoteBIDByDate = {
   bid: number;
 };
 
+export type QuoteASKByDate = {
+  date: string;
+  ask: number;
+};
+
 export type ChartSeriesData = {
   x: string;
   y: number;

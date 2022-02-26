@@ -1,5 +1,6 @@
 package com.mapin.currancyconvert.controllers;
 
+import com.mapin.currancyconvert.dto.QuoteASKByDateDTO;
 import com.mapin.currancyconvert.dto.QuoteBIDByDateDTO;
 import com.mapin.currancyconvert.services.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,15 @@ public class QuoteController {
             @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
             @RequestParam(value = "currancy", defaultValue = "") String currancy) {
         List<QuoteBIDByDateDTO> list = quoteService.dashboardBIDByDate(minDate, maxDate, currancy);
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping(value = "/ask/by-date")
+    public ResponseEntity<List<QuoteASKByDateDTO>> dashboardASKByDate(
+            @RequestParam(value = "minDate", defaultValue = "") String minDate,
+            @RequestParam(value = "maxDate", defaultValue = "") String maxDate,
+            @RequestParam(value = "currancy", defaultValue = "") String currancy) {
+        List<QuoteASKByDateDTO> list = quoteService.dashboardASKByDate(minDate, maxDate, currancy);
         return ResponseEntity.ok(list);
     }
 }

@@ -1,9 +1,25 @@
-.app-container {
-  padding: 0 55px;
+
+
+@media(min-width:375px) {
+ 
 }
 
-.sales-overview-container {
-  display: flex;
-  justify-content: space-between;
-  margin: 40px 0;
+@media(min-width:1200px) {
+
+  .app-filter-container {
+    display: flex;
+    padding: 0 55px;
+    justify-content: center;
+  }
+  .app-container {
+    padding: 0 55px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .sales-overview-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+  }
 }
