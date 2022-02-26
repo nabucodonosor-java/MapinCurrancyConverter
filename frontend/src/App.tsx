@@ -8,6 +8,8 @@ import { FilterData } from 'types';
 import { buildFiltersParams } from 'utils/request';
 import './assets/styles/custom.scss';
 import './App.css';
+import EurCard from 'component/current-currancy/eur-card';
+import UsdCard from 'component/current-currancy/usd-card';
 
 function App() {
   const [filterData, setFilterData] = useState<FilterData>();
@@ -21,6 +23,8 @@ function App() {
     <>
       <Header />
       <div className="app-container">
+      <UsdCard />
+      <EurCard />
       <Filter onFilterChange={onChangeFilterData}/>      
       <QuoteByDateComponent filterData={filterData} />
       <QuoteASKByDateComponent filterData={filterData} />

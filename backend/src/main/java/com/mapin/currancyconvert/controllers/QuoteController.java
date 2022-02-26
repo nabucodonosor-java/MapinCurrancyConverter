@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -21,6 +22,18 @@ public class QuoteController {
 
     @Autowired
     private QuoteService quoteService;
+
+    @GetMapping(value = "/current-usd")
+    public ResponseEntity<QuoteDTO> currentUSDQuote() throws IOException {
+        QuoteDTO obj = quoteService.currentUSDQuote();
+        return ResponseEntity.ok(obj);
+    }
+
+    @GetMapping(value = "/current-eur")
+    public ResponseEntity<QuoteDTO> currentEURQuote() throws IOException {
+        QuoteDTO obj = quoteService.currentEURQuote();
+        return ResponseEntity.ok(obj);
+    }
 
     @GetMapping
     public ResponseEntity<Page<QuoteDTO>> findAllWithFilters(

@@ -8,6 +8,22 @@ export const formatPrice = (price: number) => {
   }).format(price);
 };
 
+export const formatPriceEuro = (price: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    style: 'currency',
+    currency: 'EUR'
+  }).format(price);
+};
+
+export const formatPriceDollar = (price: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    style: 'currency',
+    currency: 'USD'
+  }).format(price);
+};
+
 export const formatDate = (date: Date | string) => {
   return new Date(date).toLocaleDateString();
 };

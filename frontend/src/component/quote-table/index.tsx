@@ -41,15 +41,14 @@ const QuoteTable = ({ filterData }: Props) => {
   return (
     <>
       <div className="table-responsive base-card">
-        <h1 className="">Histórico de cotações</h1>
+        <h4 className="text-center mt-1">Histórico de cotações</h4>
         {isLoading ? <h1>Carregando ...</h1> : (
           <table className="sales-table">
             <thead>
               <tr className="text-center">
                 <th>Data</th>
                 <th>Moeda</th>
-                <th>VENDA</th>
-                <th>COMPRA</th>
+                <th>VALOR</th>
               </tr>
             </thead>
             <tbody>
@@ -58,7 +57,6 @@ const QuoteTable = ({ filterData }: Props) => {
                   <td>{formatDate(item.date)}</td>
                   <td>{item.code}</td>
                   <td>{formatPrice(item.bid)}</td>
-                  <td>{formatPrice(item.ask)}</td>
                 </tr>
               ))}
 
