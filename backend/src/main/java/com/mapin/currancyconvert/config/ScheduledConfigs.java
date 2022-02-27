@@ -20,113 +20,113 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class ScheduledConfigs {
 
-    private final long SEGUNDO = 1000;
-    private final long MINUTO = SEGUNDO * 60;
-    private final long HORA = MINUTO * 60;
-    private final long DIA = MINUTO * 23;
-
-    private static final Logger logger = LoggerFactory.getLogger(ScheduledConfigs.class);
-
-    @Autowired
-    private QuoteRepository quoteRepository;
-
-    @Scheduled(fixedDelay = DIA)
-    public void verificaPorSegundo() throws IOException {
-
-        String urlUSD = "USD-BRL";
-        String urlConnUSD = "USDBRL";
-
-        // Cotação Dólar
-        JsonObject reqUSD = connectToUrlAndReturnJsonObject(urlUSD, urlConnUSD);
-
-        String codeUSD = String.valueOf(reqUSD.get("code"));
-        String highUSD = String.valueOf(reqUSD.get("high").getAsDouble());
-        String lowUSD = String.valueOf(reqUSD.get("low").getAsDouble());
-        String bidUSD = String.valueOf(reqUSD.get("bid").getAsDouble());
-        String askUSD = String.valueOf(reqUSD.get("ask").getAsDouble());
-
-        LocalDate dataAtualUSD = LocalDate.now();
-
-        String[] codeSPlit = codeUSD.split("");
-        String tempUSD = codeSPlit[1]+codeSPlit[2]+codeSPlit[3];
-
-        Quote dollarQuote = new Quote();
-        dollarQuote.setCode(tempUSD);
-        dollarQuote.setHigh(Double.parseDouble(highUSD));
-        dollarQuote.setLow(Double.parseDouble(lowUSD));
-        dollarQuote.setBid(Double.parseDouble(bidUSD));
-        dollarQuote.setAsk(Double.parseDouble(askUSD));
-        dollarQuote.setDate(dataAtualUSD);
-        quoteRepository.save(dollarQuote);
-
-//        // Cotação Euro
-
-        String urlEUR = "EUR-BRL";
-        String urlConnEUR = "EURBRL";
-
-        JsonObject reqEUR = connectToUrlAndReturnJsonObject(urlEUR, urlConnEUR);
-
-        String codeEUR = String.valueOf(reqEUR.get("code"));
-        String highEUR = String.valueOf(reqEUR.get("high").getAsDouble());
-        String lowEUR = String.valueOf(reqEUR.get("low").getAsDouble());
-        String bidEUR = String.valueOf(reqEUR.get("bid").getAsDouble());
-        String askEUR = String.valueOf(reqEUR.get("ask").getAsDouble());
-
-        LocalDate dataAtualEUR = LocalDate.now();
-
-        String[] codeEURSPlit = codeEUR.split("");
-        String tempEUR = codeEURSPlit[1]+codeEURSPlit[2]+codeEURSPlit[3];
-
-        Quote quoteEUR = new Quote();
-        quoteEUR.setCode(tempEUR);
-        quoteEUR.setHigh(Double.parseDouble(highEUR));
-        quoteEUR.setLow(Double.parseDouble(lowEUR));
-        quoteEUR.setBid(Double.parseDouble(bidEUR));
-        quoteEUR.setAsk(Double.parseDouble(askEUR));
-        quoteEUR.setDate(dataAtualEUR);
-        quoteRepository.save(quoteEUR);
-
-        // Cotação Bitcoin
-
-        String urlBIT = "BTC-BRL";
-        String urlConnBIT = "BTCBRL";
-
-        JsonObject reqBTC = connectToUrlAndReturnJsonObject(urlBIT, urlConnBIT);
-
-        String codeBTC = String.valueOf(reqBTC.get("code"));
-        String highBTC = String.valueOf(reqBTC.get("high").getAsDouble());
-        String lowBTC = String.valueOf(reqBTC.get("low").getAsDouble());
-        String bidBTC = String.valueOf(reqBTC.get("bid").getAsDouble());
-        String askBTC = String.valueOf(reqBTC.get("ask").getAsDouble());
-
-        LocalDate dataAtualBTC = LocalDate.now();
-
-        String[] codeBITSPlit = codeBTC.split("");
-        String tempBIT = codeBITSPlit[1]+codeBITSPlit[2]+codeBITSPlit[3];
-
-        Quote quoteBTC = new Quote();
-        quoteBTC.setCode(tempBIT);
-        quoteBTC.setHigh(Double.parseDouble(highBTC));
-        quoteBTC.setLow(Double.parseDouble(lowBTC));
-        quoteBTC.setBid(Double.parseDouble(bidBTC));
-        quoteBTC.setAsk(Double.parseDouble(askBTC));
-        quoteBTC.setDate(dataAtualBTC);
-        quoteRepository.save(quoteBTC);
-
-    }
-
-    private JsonObject connectToUrlAndReturnJsonObject(String currancy, String urlConn) throws MalformedURLException, IOException{
-        URL url = new URL("https://economia.awesomeapi.com.br/last/"+currancy);
-        HttpURLConnection request = (HttpURLConnection)url.openConnection();
-        request.connect();
-
-        JsonElement root = JsonParser.parseReader(new InputStreamReader((InputStream)request.getContent()));
-        JsonObject rootObj = root.getAsJsonObject();
-        JsonObject quote = rootObj.get(urlConn).getAsJsonObject();
-        return quote;
-    }
+//    private final long SEGUNDO = 1000;
+//    private final long MINUTO = SEGUNDO * 60;
+//    private final long HORA = MINUTO * 60;
+//    private final long DIA = MINUTO * 23;
+//
+//    private static final Logger logger = LoggerFactory.getLogger(ScheduledConfigs.class);
+//
+//    @Autowired
+//    private QuoteRepository quoteRepository;
+//
+//    @Scheduled(fixedDelay = DIA)
+//    public void verificaPorSegundo() throws IOException {
+//
+//        String urlUSD = "USD-BRL";
+//        String urlConnUSD = "USDBRL";
+//
+//        // Cotação Dólar
+//        JsonObject reqUSD = connectToUrlAndReturnJsonObject(urlUSD, urlConnUSD);
+//
+//        String codeUSD = String.valueOf(reqUSD.get("code"));
+//        String highUSD = String.valueOf(reqUSD.get("high").getAsDouble());
+//        String lowUSD = String.valueOf(reqUSD.get("low").getAsDouble());
+//        String bidUSD = String.valueOf(reqUSD.get("bid").getAsDouble());
+//        String askUSD = String.valueOf(reqUSD.get("ask").getAsDouble());
+//
+//        LocalDate dataAtualUSD = LocalDate.now();
+//
+//        String[] codeSPlit = codeUSD.split("");
+//        String tempUSD = codeSPlit[1]+codeSPlit[2]+codeSPlit[3];
+//
+//        Quote dollarQuote = new Quote();
+//        dollarQuote.setCode(tempUSD);
+//        dollarQuote.setHigh(Double.parseDouble(highUSD));
+//        dollarQuote.setLow(Double.parseDouble(lowUSD));
+//        dollarQuote.setBid(Double.parseDouble(bidUSD));
+//        dollarQuote.setAsk(Double.parseDouble(askUSD));
+//        dollarQuote.setDate(dataAtualUSD);
+//        quoteRepository.save(dollarQuote);
+//
+////        // Cotação Euro
+//
+//        String urlEUR = "EUR-BRL";
+//        String urlConnEUR = "EURBRL";
+//
+//        JsonObject reqEUR = connectToUrlAndReturnJsonObject(urlEUR, urlConnEUR);
+//
+//        String codeEUR = String.valueOf(reqEUR.get("code"));
+//        String highEUR = String.valueOf(reqEUR.get("high").getAsDouble());
+//        String lowEUR = String.valueOf(reqEUR.get("low").getAsDouble());
+//        String bidEUR = String.valueOf(reqEUR.get("bid").getAsDouble());
+//        String askEUR = String.valueOf(reqEUR.get("ask").getAsDouble());
+//
+//        LocalDate dataAtualEUR = LocalDate.now();
+//
+//        String[] codeEURSPlit = codeEUR.split("");
+//        String tempEUR = codeEURSPlit[1]+codeEURSPlit[2]+codeEURSPlit[3];
+//
+//        Quote quoteEUR = new Quote();
+//        quoteEUR.setCode(tempEUR);
+//        quoteEUR.setHigh(Double.parseDouble(highEUR));
+//        quoteEUR.setLow(Double.parseDouble(lowEUR));
+//        quoteEUR.setBid(Double.parseDouble(bidEUR));
+//        quoteEUR.setAsk(Double.parseDouble(askEUR));
+//        quoteEUR.setDate(dataAtualEUR);
+//        quoteRepository.save(quoteEUR);
+//
+//        // Cotação Bitcoin
+//
+//        String urlBIT = "BTC-BRL";
+//        String urlConnBIT = "BTCBRL";
+//
+//        JsonObject reqBTC = connectToUrlAndReturnJsonObject(urlBIT, urlConnBIT);
+//
+//        String codeBTC = String.valueOf(reqBTC.get("code"));
+//        String highBTC = String.valueOf(reqBTC.get("high").getAsDouble());
+//        String lowBTC = String.valueOf(reqBTC.get("low").getAsDouble());
+//        String bidBTC = String.valueOf(reqBTC.get("bid").getAsDouble());
+//        String askBTC = String.valueOf(reqBTC.get("ask").getAsDouble());
+//
+//        LocalDate dataAtualBTC = LocalDate.now();
+//
+//        String[] codeBITSPlit = codeBTC.split("");
+//        String tempBIT = codeBITSPlit[1]+codeBITSPlit[2]+codeBITSPlit[3];
+//
+//        Quote quoteBTC = new Quote();
+//        quoteBTC.setCode(tempBIT);
+//        quoteBTC.setHigh(Double.parseDouble(highBTC));
+//        quoteBTC.setLow(Double.parseDouble(lowBTC));
+//        quoteBTC.setBid(Double.parseDouble(bidBTC));
+//        quoteBTC.setAsk(Double.parseDouble(askBTC));
+//        quoteBTC.setDate(dataAtualBTC);
+//        quoteRepository.save(quoteBTC);
+//
+//    }
+//
+//    private JsonObject connectToUrlAndReturnJsonObject(String currancy, String urlConn) throws MalformedURLException, IOException{
+//        URL url = new URL("https://economia.awesomeapi.com.br/last/"+currancy);
+//        HttpURLConnection request = (HttpURLConnection)url.openConnection();
+//        request.connect();
+//
+//        JsonElement root = JsonParser.parseReader(new InputStreamReader((InputStream)request.getContent()));
+//        JsonObject rootObj = root.getAsJsonObject();
+//        JsonObject quote = rootObj.get(urlConn).getAsJsonObject();
+//        return quote;
+//    }
 }

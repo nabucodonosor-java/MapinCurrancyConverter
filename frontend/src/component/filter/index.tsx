@@ -14,7 +14,7 @@ type Props = {
 
 const Filter = ({ onFilterChange }: Props) => {
   const [dates, setDates] = useState<Date[]>([]);
-  const [currancy, setCurrancy] = useState<Currancy>('USD');
+  const [currancy, setCurrancy] = useState<Currancy>();
 
   const onChangeDate = (dates: Date[]) => {
     if (dates.length === 2) {
@@ -45,6 +45,7 @@ const Filter = ({ onFilterChange }: Props) => {
         placeholder="Selecione um período"
       />
       <select className="filter-input" value={currancy} onChange={onChangeCurrancy}>
+        <option value="">Selecione uma moeda</option>
         <option value="USD">Dólar</option>
         <option value="EUR">Euro</option>
         <option value="BTC">Bitcoin</option>
