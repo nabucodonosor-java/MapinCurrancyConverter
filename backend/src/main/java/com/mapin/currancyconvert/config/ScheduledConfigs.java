@@ -27,13 +27,14 @@ public class ScheduledConfigs {
     private final long SEGUNDO = 1000;
     private final long MINUTO = SEGUNDO * 60;
     private final long HORA = MINUTO * 60;
+    private final long DIA = MINUTO * 23;
 
     private static final Logger logger = LoggerFactory.getLogger(ScheduledConfigs.class);
 
     @Autowired
     private QuoteRepository quoteRepository;
 
-    @Scheduled(fixedDelay = HORA)
+    @Scheduled(fixedDelay = DIA)
     public void verificaPorSegundo() throws IOException {
 
         String urlUSD = "USD-BRL";
