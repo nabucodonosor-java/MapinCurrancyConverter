@@ -27,7 +27,7 @@ const Filter = ({ onFilterChange }: Props) => {
     const selectedCurrancy = event.target.value as Currancy;
     setCurrancy(selectedCurrancy);
     onFilterChange({ dates, currancy: selectedCurrancy });
-  };
+  }; 
 
   return (
 

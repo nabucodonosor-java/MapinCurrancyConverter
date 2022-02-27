@@ -21,7 +21,7 @@ const EurCard = () => {
   }, []);
 
   return (
-    <div className="eur-card-container base-card">   
+    <div className="card-currancy-container base-card">   
       <div className="card-title">
         <img src={euroLogo} alt="Sem conexão com a internet" width="10%" />
         <h6>Cotação do Euro</h6>
@@ -40,7 +40,7 @@ const EurCard = () => {
               formatDate(euro?.date))}</td>
             <td>{euro?.code}</td>
             <td>{euro?.bid && (
-              formatPrice(euro?.bid)
+              formatPrice(euro?.bid) 
             )}</td>
           </tr>
 

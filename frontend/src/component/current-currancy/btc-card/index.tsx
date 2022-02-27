@@ -21,7 +21,7 @@ const BtcCard = () => {
 
 
   return (
-    <div className="base-card">
+    <div className="card-currancy-container base-card">
       <div className="card-title">
         <img src={bitcoinLogo} alt="Sem conexão com a internet" width="10%" />
         <h6>Cotação do Bitcoin</h6>

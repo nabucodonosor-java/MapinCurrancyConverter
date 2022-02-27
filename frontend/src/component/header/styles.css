@@ -13,3 +13,14 @@
     color: #5f7bd8;
     margin-bottom: 10px;
 }
+
+@media(min-width:1200px) {
+    .main-header-container { 
+        height: 150px;
+       
+    }
+    
+    .main-header-container h1 {
+        font-size: 50px;
+    }
+  }
