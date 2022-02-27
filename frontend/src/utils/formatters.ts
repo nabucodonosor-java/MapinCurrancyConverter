@@ -34,7 +34,9 @@ export const formatPriceBitcoin = (price: number) => {
 
 
 export const formatDate = (date: Date | string) => {
-  return new Date(date).toLocaleDateString();
+  let correctDate = new Date(date);
+  correctDate.setDate(correctDate.getDate() + 1);
+  return correctDate.toLocaleDateString();;
 };
 
 export const formatDateToServer = (date?: Date) => {
