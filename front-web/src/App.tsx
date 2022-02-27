@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import Filter from 'component/filter';
+import Header from 'component/header';
+import QuoteASKByDateComponent from 'component/quote-ask-by-date';
+import QuoteByDateComponent from 'component/quote-bid-by-date';
+import QuoteTable from 'component/quote-table';
+import { useMemo, useState } from 'react';
+import { FilterData } from 'types';
+import { buildFiltersParams } from 'utils/request';
+import './styles/custom.scss';
 import './App.css';
+import EurCard from 'component/current-currancy/eur-card';
+import UsdCard from 'component/current-currancy/usd-card';
+import BtcCard from 'component/current-currancy/btc-card';
 
 function App() {
+  const [filterData, setFilterData] = useState<FilterData>();
+  const params = useMemo(() => buildFiltersParams(filterData), [filterData]);
+
+  const onChangeFilterData = (filter: FilterData) => {
+    setFilterData(filter);
+  };
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className="app-container">
+      <UsdCard />
+      <EurCard />
+      <BtcCard />
+      </div>
+      <div className="app-container">
+      <Filter onFilterChange={onChangeFilterData}/>      
+      <QuoteByDateComponent filterData={filterData} />
+      <QuoteASKByDateComponent filterData={filterData} />
+      <QuoteTable filterData={filterData} />
+      </div>
+    </>
   );
 }
 
