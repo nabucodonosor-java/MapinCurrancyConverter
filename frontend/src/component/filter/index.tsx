@@ -47,6 +47,7 @@ const Filter = ({ onFilterChange }: Props) => {
       <select className="filter-input" value={currancy} onChange={onChangeCurrancy}>
         <option value="USD">Dólar</option>
         <option value="EUR">Euro</option>
+        <option value="BTC">Bitcoin</option>
       </select>
     </div>
  

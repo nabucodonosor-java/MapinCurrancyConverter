@@ -8,7 +8,6 @@ import './styles.css';
 const EurCard = () => {
   const [euro, setEuro] = useState<Quote>();
   const [convert, setConvert] = useState(0);
-  let date = new Date();
 
   useEffect(() => {
     makeRequest
@@ -25,7 +24,7 @@ const EurCard = () => {
     <div className="eur-card-container base-card">   
       <div className="card-title">
         <img src={euroLogo} alt="Sem conexão com a internet" width="10%" />
-        <h6>Cotação do Euro de {formatDate(date)}</h6>
+        <h6>Cotação do Euro</h6>
       </div>
       <table className="card-table">
         <thead>
@@ -49,7 +48,7 @@ const EurCard = () => {
         </tbody>
       </table>
       <div className="convert-container">
-        <h5>CONVERSOR</h5>
+      <h5 className="mb-1 mt-1"><u>CONVERSOR</u></h5>
         <table className="convert-table">
           <thead>
             <tr>

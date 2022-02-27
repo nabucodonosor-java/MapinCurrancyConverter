@@ -1,10 +1,11 @@
 .eur-card-container {
     margin: 10px 0;
 }
+
 .card-title {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .card-table {
@@ -48,9 +49,42 @@
 }
 
 .formatPriceDollar {
-    color: green;
+    color: #489f37;
 }
 
 .formatPriceEuro {
-    color: gold;
+    color: #e2b621;
+}
+
+.formatPriceBitcoin {
+    color: #f7931a;
+}
+
+@media(min-width:768px) {
+
+    .card-title img {
+        width: 5%;
+    }
+
+    .card-title h6 {
+        font-size: 26px;
+    }
+
+    .card-table th,td {
+        font-size: 20px;
+    }
+
+    .convert-container {
+        padding: 10px;
+    }
+
+    .convert-table input {
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .convert-container h5 {
+        font-size: 26px;
+    }
+ 
 }

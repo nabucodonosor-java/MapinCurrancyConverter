@@ -30,7 +30,7 @@ const QuoteBIDByDateComponent = ({ filterData }: Props) => {
   return (
     <div className="quotes-by-date-container base-card">
       <div>
-        <h4 className="quotes-by-date-title">Cotação para VENDA - {params.currancy === 'EUR' ? 'Euro' : 'Dólar'}</h4>
+        <h4 className="quotes-by-date-title">Cotação para VENDA - {params.currancy}</h4>
         {filterData?.dates && (
           <span className="quotes-by-date-period">
             {filterData?.dates.length === 0 ? '' : formatDate(filterData?.dates?.[0])} {filterData?.dates.length === 0 ? '' : '-'} {filterData?.dates.length === 0 ? '' : formatDate(filterData?.dates?.[1])}

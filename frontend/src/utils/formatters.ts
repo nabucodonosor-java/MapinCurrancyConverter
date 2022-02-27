@@ -24,6 +24,15 @@ export const formatPriceDollar = (price: number) => {
   }).format(price);
 };
 
+export const formatPriceBitcoin = (price: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    style: 'currency',
+    currency: 'BTC'
+  }).format(price);
+};
+
+
 export const formatDate = (date: Date | string) => {
   return new Date(date).toLocaleDateString();
 };
@@ -37,7 +46,8 @@ export const formatDateToServer = (date?: Date) => {
 export const formatCurrancy = (currancy: Currancy) => {
   const textByCurrancy = {
     USD: 'dolar',
-    EUR: 'euro'
+    EUR: 'euro',
+    BTC: 'bitcoin'
   };
 
   return textByCurrancy[currancy];

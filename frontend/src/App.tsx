@@ -10,6 +10,7 @@ import './assets/styles/custom.scss';
 import './App.css';
 import EurCard from 'component/current-currancy/eur-card';
 import UsdCard from 'component/current-currancy/usd-card';
+import BtcCard from 'component/current-currancy/btc-card';
 
 function App() {
   const [filterData, setFilterData] = useState<FilterData>();
@@ -25,6 +26,9 @@ function App() {
       <div className="app-container">
       <UsdCard />
       <EurCard />
+      <BtcCard />
+      </div>
+      <div className="app-container">
       <Filter onFilterChange={onChangeFilterData}/>      
       <QuoteByDateComponent filterData={filterData} />
       <QuoteASKByDateComponent filterData={filterData} />

@@ -116,6 +116,35 @@ public class QuoteService {
         return quoteEUR;
     }
 
+    @Transactional(readOnly = true)
+    public QuoteDTO currentBTCQuote() throws IOException {
+        String urlBIT = "BTC-BRL";
+        String urlConnBIT = "BTCBRL";
+
+        JsonObject reqBTC = connectToUrlAndReturnJsonObject(urlBIT, urlConnBIT);
+
+        String codeBTC = String.valueOf(reqBTC.get("code"));
+        String highBTC = String.valueOf(reqBTC.get("high").getAsDouble());
+        String lowBTC = String.valueOf(reqBTC.get("low").getAsDouble());
+        String bidBTC = String.valueOf(reqBTC.get("bid").getAsDouble());
+        String askBTC = String.valueOf(reqBTC.get("ask").getAsDouble());
+
+        LocalDate dataAtualBTC = LocalDate.now();
+
+        String[] codeBITSPlit = codeBTC.split("");
+        String tempBIT = codeBITSPlit[1]+codeBITSPlit[2]+codeBITSPlit[3];
+
+        QuoteDTO quoteBTC = new QuoteDTO();
+        quoteBTC.setCode(tempBIT);
+        quoteBTC.setHigh(Double.parseDouble(highBTC));
+        quoteBTC.setLow(Double.parseDouble(lowBTC));
+        quoteBTC.setBid(Double.parseDouble(bidBTC));
+        quoteBTC.setAsk(Double.parseDouble(askBTC));
+        quoteBTC.setDate(dataAtualBTC);
+
+        return quoteBTC;
+    }
+
     private JsonObject connectToUrlAndReturnJsonObject(String currancy, String urlConn) throws MalformedURLException, IOException {
         URL url = new URL("https://economia.awesomeapi.com.br/last/"+currancy);
         HttpURLConnection request = (HttpURLConnection)url.openConnection();

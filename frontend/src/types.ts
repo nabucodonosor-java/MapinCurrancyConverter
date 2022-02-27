@@ -13,7 +13,7 @@ export type ChartSeriesData = {
   y: number;
 };
 
-export type Currancy = 'USD' | 'EUR';
+export type Currancy = 'USD' | 'EUR' | 'BTC';
 
 export type FilterData = {
   dates?: Date[];

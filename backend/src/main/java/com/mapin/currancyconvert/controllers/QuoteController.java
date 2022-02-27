@@ -35,6 +35,12 @@ public class QuoteController {
         return ResponseEntity.ok(obj);
     }
 
+    @GetMapping(value = "/current-btc")
+    public ResponseEntity<QuoteDTO> currentBTCQuote() throws IOException {
+        QuoteDTO obj = quoteService.currentBTCQuote();
+        return ResponseEntity.ok(obj);
+    }
+
     @GetMapping
     public ResponseEntity<Page<QuoteDTO>> findAllWithFilters(
             @RequestParam(value = "minDate", defaultValue = "") String minDate,
