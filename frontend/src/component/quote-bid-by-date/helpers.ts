@@ -40,7 +40,7 @@ export const chartOptions = {
   yaxis: {},
   fill: {
     opacity: 1,
-    colors: ['#3e82f7']
+    colors: ['#5f7bd8']
   },
   tooltip: {
     theme: 'dark',
