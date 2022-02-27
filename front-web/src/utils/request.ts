@@ -2,8 +2,9 @@ import axios from 'axios';
 import { FilterData } from '../types';
 import { formatDateToServer } from './formatters';
 
-const baseURL = 'https://mapin-convert.herokuapp.com';
+const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8081';
 
+const baseURL = BASE_URL;
 export const makeRequest = axios.create({
   baseURL
 });
