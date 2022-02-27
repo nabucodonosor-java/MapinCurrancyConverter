@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FilterData } from '../types';
 import { formatDateToServer } from './formatters';
 
-const baseURL = process.env.REACT_APP_BACKEND_URL ?? 'https://mapin-convert.herokuapp.com';
+const baseURL = 'https://mapin-convert.herokuapp.com';
 
 export const makeRequest = axios.create({
   baseURL
