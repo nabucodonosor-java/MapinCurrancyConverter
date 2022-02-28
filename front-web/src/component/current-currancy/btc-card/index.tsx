@@ -7,8 +7,10 @@ import { formatDate, formatPriceBitcoin, formatPrice } from "utils/formatters";
 const BtcCard = () => {
   const [bitcoin, setBitcoin] = useState<Quote>();
   const [convert, setConvert] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     makeRequest
       .get<Quote>('/quotes/current-btc')
       .then((response) => {
@@ -16,6 +18,9 @@ const BtcCard = () => {
       })
       .catch(() => {
         console.error('Erro de integração coma API');
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -36,19 +41,20 @@ const BtcCard = () => {
         </thead>
         <tbody>
           <tr>
+          {isLoading ? <h6>CARREGANDO INFORMAÇÕES ..</h6> : (
+            <>
             <td>{bitcoin?.date && (
-              formatDate(bitcoin?.date))}</td>
-            <td>{bitcoin?.code}</td>
-            <td>{bitcoin?.bid && (
-              formatPrice(bitcoin?.bid)
-            )}</td>
+                formatDate(bitcoin?.date))}</td><td>{bitcoin?.code}</td><td>{bitcoin?.bid && (
+                  formatPrice(bitcoin?.bid)
+              )}
+            </td>
+            </>
+          )}
           </tr>
-
-
         </tbody>
       </table>
       <div className="convert-container">
-      <h5 className="mb-1 mt-1"><u>CONVERSOR</u></h5>
+      <h5 className="mb-3 mt-1"><u>CONVERSOR</u></h5>
         <table className="convert-table">
           <thead>
             <tr>

@@ -49,6 +49,7 @@
     font-size: 14px;
     font-weight: bolder;
     max-width: 80px;
+    height: 40px;
 }
 
 .formatPriceDollar {

@@ -8,6 +8,7 @@ import './styles.css';
 const EurCard = () => {
   const [euro, setEuro] = useState<Quote>();
   const [convert, setConvert] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     makeRequest
@@ -17,6 +18,9 @@ const EurCard = () => {
       })
       .catch(() => {
         console.error('Erro de integração coma API');
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -36,19 +40,22 @@ const EurCard = () => {
         </thead>
         <tbody>
           <tr>
+          {isLoading ? <h6>CARREGANDO INFORMAÇÕES ..</h6> : (
+            <>
             <td>{euro?.date && (
-              formatDate(euro?.date))}</td>
-            <td>{euro?.code}</td>
-            <td>{euro?.bid && (
-              formatPrice(euro?.bid) 
-            )}</td>
+                formatDate(euro?.date))}</td><td>{euro?.code}</td><td>{euro?.bid && (
+                  formatPrice(euro?.bid)
+              )}
+            </td>
+            </>
+          )}
           </tr>
 
 
         </tbody>
       </table>
       <div className="convert-container">
-      <h5 className="mb-1 mt-1"><u>CONVERSOR</u></h5>
+      <h5 className="mb-3 mt-1"><u>CONVERSOR</u></h5>
         <table className="convert-table">
           <thead>
             <tr>

@@ -7,6 +7,7 @@ import { formatDate, formatPrice, formatPriceDollar } from "utils/formatters";
 const UsdCard = () => {
   const [dolar, setDolar] = useState<Quote>();
   const [convert, setConvert] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     makeRequest
@@ -16,6 +17,9 @@ const UsdCard = () => {
       })
       .catch(() => {
         console.error('Erro de integração coma API');
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -36,19 +40,22 @@ const UsdCard = () => {
         </thead>
         <tbody>
           <tr>
+          {isLoading ? <h6>CARREGANDO INFORMAÇÕES ..</h6> : (
+            <>
             <td>{dolar?.date && (
-              formatDate(dolar?.date))}</td>
-            <td>{dolar?.code}</td>
-            <td>{dolar?.bid && (
-              formatPrice(dolar?.bid)
-            )}</td>
+                formatDate(dolar?.date))}</td><td>{dolar?.code}</td><td>{dolar?.bid && (
+                  formatPrice(dolar?.bid)
+              )}
+            </td>
+            </>
+          )}
           </tr>
 
 
         </tbody>
       </table>
       <div className="convert-container">
-      <h5 className="mb-1 mt-1"><u>CONVERSOR</u></h5>
+      <h5 className="mb-3 mt-1"><u>CONVERSOR</u></h5>
         <table className="convert-table">
           <thead>
             <tr>
