@@ -11,6 +11,7 @@ const EurCard = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     makeRequest
       .get<Quote>('/quotes/current-eur')
       .then((response) => {

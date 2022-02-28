@@ -10,6 +10,7 @@ const UsdCard = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     makeRequest
       .get<Quote>('/quotes/current-usd')
       .then((response) => {
